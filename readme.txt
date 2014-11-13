@@ -1,8 +1,10 @@
-Konstantine Mushegian
-Programming Assignment 3: Type System and Semantics - Phase 1
+C-Like Language Interpreter
 
-Please use NetBeans to compile the program.
+This program is a result of a series of projects that I had to do for the Programming Languages class taught by Professor Mohaammad Irfan in the Fall of 2014.
 
-As of right now, I am between Phases 1 and 2, but phase 1 is done, there is some stuff
-getting printed, those are parts of Phase 2 so please ignore those for now, unless
-I am doing something terribly wrong :)
+-------
+
+Interpreter is implemented in Java and serves as a translator for C-Like languages based on the grammar defined in Allen Tucker's book "Programming Languages".
+
+In case you will want to run this program, please compile it using NetBeans.
+
