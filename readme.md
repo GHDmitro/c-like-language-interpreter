@@ -1,6 +1,6 @@
 C-Like Language Interpreter
 
-This program is a result of a series of projects that I had to do for the Programming Languages class taught by Professor Mohaammad Irfan in the Fall of 2014.
+This program is a result of a series of projects that I had to do for the Programming Languages class taught by Professor Mohammad Irfan in the Fall of 2014.
 
 -------
 
