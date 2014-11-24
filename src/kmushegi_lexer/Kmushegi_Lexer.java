@@ -735,6 +735,7 @@ public class Kmushegi_Lexer {
     @SuppressWarnings("ConvertToStringSwitch")
     public static idDataHolder addition() { //this method does the same as term, just operations
         idDataHolder temp1 = term(); //are + or - instead of multOps
+        idDataHolder temp3 = new idDataHolder(null, null);
         while (nextTokenIndex < tokens.size() && "addOp".equals(tokens.get(nextTokenIndex))) {
             String operation = lexemes.get(nextTokenIndex);
             String temp1type = temp1.type;
@@ -750,7 +751,7 @@ public class Kmushegi_Lexer {
                 } else if (operation.equals("-")) {
                     result = t1 - t2;
                 }
-                temp1.value = Integer.toString(result);
+                temp3.value = Integer.toString(result);
             } else if ((temp1type.equals("float") || temp1type.equals("int")) && temp2type.equals("float")) {
                 float result = 0;
                 float t1 = Float.parseFloat((String) temp1.value);
@@ -760,13 +761,17 @@ public class Kmushegi_Lexer {
                 } else if (operation.equals("-")) {
                     result = t1 - t2;
                 }
-                temp1.value = Float.toString(result);
+                temp3.value = Float.toString(result);
             } else {
                 System.out.println("Error: Types in + or - operation do not match.");
                 System.exit(1);
             }
         }
-        return temp1;
+        if (temp3.value != null) { //if temp3 has been assigned value returned it
+            return temp3;
+        } else {
+            return temp1; //else pass temp1 up
+        }
     }
 
     //term --> factor multOp factor
