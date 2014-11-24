@@ -3,7 +3,11 @@ int main() {
     float var2;
     int i;
 
-    var1 = 5;
+    var1 = 10;
     var2 = 10.0;
     var2 = var1 + 10 * 10/3;
+
+    var2 = (var2 > var1) * 2.0;
+    print var2;
+        
 }

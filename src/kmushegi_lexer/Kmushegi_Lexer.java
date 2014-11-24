@@ -1,6 +1,6 @@
 /*
  * Konstantine Mushegian. 2014
- * Lexical Analyzer for CLite Language
+ * Lexical Analyzer for a C-Like Language
  */
 package kmushegi_lexer;
 
@@ -751,7 +751,7 @@ public class Kmushegi_Lexer {
                     result = t1 - t2;
                 }
                 temp1.value = Integer.toString(result);
-            } else if (temp1type.equals("float") || temp2type.equals("float")) {
+            } else if ((temp1type.equals("float") || temp1type.equals("int")) && temp2type.equals("float")) {
                 float result = 0;
                 float t1 = Float.parseFloat((String) temp1.value);
                 float t2 = Float.parseFloat((String) temp2.value);
@@ -798,7 +798,7 @@ public class Kmushegi_Lexer {
                 }
                 //converting the result value back to string
                 temp1.value = Integer.toString(result);
-            } else if (temp1type.equals("float") || temp2type.equals("float")) {
+            } else if ((temp1type.equals("float") || temp1type.equals("int")) && temp2type.equals("float")) {
                 float result = 0;
                 float t1 = Float.parseFloat((String) temp1.value);
                 float t2 = Float.parseFloat((String) temp2.value);
@@ -814,7 +814,7 @@ public class Kmushegi_Lexer {
                 temp1.value = Float.toString(result);
             } else { //if none of these is satisfied, ie if types are wrong then type mismatch error
                 System.out.println("Error: Types in *, / or % operation do not match.");
-                System.exit(1); //and exit
+                System.exit(1); //and exit   
             }
         }
         return temp1; //pass up the type/value pair up
