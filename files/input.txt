@@ -17,6 +17,4 @@ int main() {
 	else
 		print i;
 	return k;
-	while(w<10)
-		print k;
 }

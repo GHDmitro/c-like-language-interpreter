@@ -389,7 +389,7 @@ public class Kmushegi_Lexer {
                     nextTokenIndex++;
                     int i = nextTokenIndex;
                     String insideWhile = "";
-                    while(!(")").equals(lexemes.get(i))) {
+                    while (!(")").equals(lexemes.get(i))) {
                         insideWhile = insideWhile + lexemes.get(i);
                         i++;
                     }
@@ -469,10 +469,15 @@ public class Kmushegi_Lexer {
                         System.out.println("Error: Narrowing Conversion is not allowed!");
                         System.exit(1);
                     } //otherwise add value to the symboltable, and print he value
-                    if (shouldExecute) { //check if stmt should actually be executed
-                        symbolTable.get(idName).value = expr.value; //if yers print it else move on
-                        //this is done for syntax checking purposes
-                        System.out.println("The value of " + idName + " is: " + symbolTable.get(idName).value);
+                    if (shouldExecute) {//check if stmt should actually be executed
+                        if(expr.value != null) { //and that right side has actual value
+                            symbolTable.get(idName).value = expr.value; //if yers print it else move on
+                            //this is done for syntax checking purposes
+                            System.out.println("The value of " + idName + " is: " + symbolTable.get(idName).value);
+                        } else {
+                            System.out.println("The expression on the right side of " + idName +" holds no value");
+                            System.exit(1);
+                        } 
                     }
                     //semicolon check at the end of assignment
                 } else {
@@ -819,8 +824,14 @@ public class Kmushegi_Lexer {
     public static idDataHolder factor() {
         idDataHolder temp;
         if (nextTokenIndex < tokens.size() && "id".equals(tokens.get(nextTokenIndex))) {
-            nextTokenIndex++; //if we have an ID we just return its idDataHolder from the symbol table
-            return symbolTable.get(lexemes.get(nextTokenIndex - 1));
+            if (symbolTable.containsKey(lexemes.get(nextTokenIndex))) {
+                nextTokenIndex++;
+                return symbolTable.get(lexemes.get(nextTokenIndex - 1));
+            } else {
+                System.out.println("Error: Variable " + lexemes.get(nextTokenIndex) + " not declared.");
+                System.exit(1);
+                return null;
+            }
         } else if (nextTokenIndex < tokens.size() && "intLiteral".equals(tokens.get(nextTokenIndex))) {
             temp = new idDataHolder("int", lexemes.get(nextTokenIndex));
             nextTokenIndex++; //if not id, we make a new dataholder object with the correspoding

@@ -1,0 +1,9 @@
+int main() {
+    int var1;
+    float var2;
+    int i;
+
+    var1 = 5;
+    var2 = 10.0;
+    var2 = var1 + 10 * 10/3;
+}
