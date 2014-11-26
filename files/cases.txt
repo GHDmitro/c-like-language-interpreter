@@ -8,7 +8,7 @@ int main() {
     var2 = var1 + 10 * 10/3;
     print var1;
 
-    if(var2 > var1 * 2 - 100)
+    if(50 > 10)
         var2 = var1 * 10;
     print var2;    
 }

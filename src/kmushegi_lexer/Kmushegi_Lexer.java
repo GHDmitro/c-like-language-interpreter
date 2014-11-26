@@ -629,6 +629,7 @@ public class Kmushegi_Lexer {
                     }
                 }
                 temp3.value = Boolean.toString(result);
+                temp3.value = temp3.value.getClass().getName();
             } else {
                 System.out.println("Error: Types in Equality operation do not match.");
                 System.exit(1);
@@ -688,6 +689,8 @@ public class Kmushegi_Lexer {
                 temp3.value = Boolean.toString(result); //here it is
             } else if (temp1type.equals("float") || temp2type.equals("float")) { //allowing widening conversion
                 boolean result = true;
+                System.out.println(temp1.type);
+                System.out.println(temp1.value);
                 float t1 = Float.parseFloat((String) temp1.value);
                 float t2 = Float.parseFloat((String) temp2.value);
                 if (operation.equals(">")) { //checking operation
