@@ -516,6 +516,11 @@ public class Kmushegi_Lexer {
                     result = true; //otherwise one of them is true, so expression is true
                 }
                 temp3.value = Boolean.toString(result);
+                
+               if (temp3.value != null){
+                   temp3.type = "float";
+               }
+           
             } else { //types are not bool, then its a type mismatch
                 System.out.println("Error: Types in Expression operation do not match");
                 System.exit(1);
